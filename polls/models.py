@@ -15,4 +15,4 @@ class Dish(models.Model):
     votes = models.IntegerField(default=0)
 
     def __str__(self):
-        return self.title
+        return self.title + ' from ' + self.restaurant_name

@@ -1,0 +1,19 @@
+<h1>{{ dish.title }}</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'polls:vote' dish.id %}" method="post">
+    {% csrf_token %}
+        <input type="hidden" name="dish" id="dish{{ dish.id }}" value="{{ dish.id }}">
+        <label for="dish{{ dish.id }}">Vote for {{ dish.title }}</label><br>
+    <input type="submit" value="Vote">
+</form>
+
+<!-- figure out how to make an image button -->
+<!-- instead of using python, maybe have js do it. But need to figure out how to load js in django -->
+<form action="{% url 'polls:image' dish.id %}" method="post">
+    {% csrf_token %}
+        <input type="hidden" name="dish" id="dish{{ dish.id }}" value="{{ dish.id }}">
+        <label for="dish{{ dish.id }}">Image for {{ dish.title }}</label><br>
+    <input type="submit" value="Image">
+</form>

@@ -1,0 +1,9 @@
+{% if dish_list %}
+    <ul>
+    {% for dish in dish_list %}
+        <li><a href="{% url 'polls:detail' dish.id %}">{{ dish.title }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No dishes are available.</p>
+{% endif %}

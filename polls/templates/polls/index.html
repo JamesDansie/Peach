@@ -1,9 +1,23 @@
-{% if dish_list %}
-    <ul>
-    {% for dish in dish_list %}
-        <li><a href="{% url 'polls:detail' dish.id %}">{{ dish.title }}</a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No dishes are available.</p>
-{% endif %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dishes</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
+</head>
+<body>
+    {% if dish_list %}
+        <h1>List of Dishes</h1>
+        <ul>
+        {% for dish in dish_list %}
+            <li><a href="{% url 'polls:detail' dish.id %}">{{ dish.title }}</a></li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No dishes are available.</p>
+    {% endif %}
+</body>
+</html>

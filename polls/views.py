@@ -17,7 +17,7 @@ class IndexView(generic.ListView):
         if(len(dish_list) < 1):
             d1 = Dish(
                 title = "Red Curry",
-                img = "https://via.placeholder.com/150",
+                img = "https://upload.wikimedia.org/wikipedia/commons/2/29/Kaeng_phet_mu.jpg",
                 restaurant_name = "Thai Place",
                 price = 8.99,
                 description = "Yummy curry!",
@@ -28,7 +28,7 @@ class IndexView(generic.ListView):
             
             d2 = Dish(
                 title = "Fish and Chips",
-                img = "https://via.placeholder.com/150",
+                img = "https://upload.wikimedia.org/wikipedia/commons/a/a2/Fish_and_chips_with_a_pint_of_cider.jpg",
                 restaurant_name = "The Fisherman's Wharf",
                 price = 10.99,
                 description = "Pippin' hot fish and chips!",

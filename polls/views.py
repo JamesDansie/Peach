@@ -59,7 +59,6 @@ class IndexView(generic.ListView):
                     other_text = "Other text " + str(x),
                     votes = 0
                 )
-                print(d)
                 d.save()
 
             dish_list = Dish.objects.order_by('id')

@@ -11,8 +11,9 @@ class IndexView(generic.ListView):
 
     def get_queryset(self):
         dish_list = Dish.objects.order_by('id')
-        print(dish_list, type(dish_list), len(dish_list))
-        # There's no existing dishes, make some dishes.
+        # debugging code
+        # print(dish_list, type(dish_list), len(dish_list))
+        # If there's no existing dishes, make some dishes.
         if(len(dish_list) < 1):
             d1 = Dish(
                 title = "Red Curry",
@@ -65,31 +66,9 @@ class IndexView(generic.ListView):
         
         return dish_list
 
-# def index(request):
-#     dish_list = Dish.objects.order_by('id')
-#     context = {
-#         'dish_list': dish_list,
-#     }
-#     return render(request, 'polls/index.html', context)
-
-#     # #Original version
-#     # template = loader.get_template('polls/index.html')
-#     # return HttpResponse(template.render(context, request))
-
 class DetailView(generic.DetailView):
     model = Dish
     template_name = 'polls/detail.html'
-
-# def detail(request, dish_id):
-#     dish = get_object_or_404(Dish, pk=dish_id)
-#     return render(request, 'polls/detail.html', {'dish': dish})
-
-# need to figure out how to save an image
-# if it is handled on the server side it will be here
-# if is is handled with client side js, then this is not needed.
-def image(request, dish_id):
-    response = "You're looking at the results of question %s."
-    return HttpResponse(response % dish_id)
 
 def vote(request, dish_id):
     dish = get_object_or_404(Dish, pk=dish_id)

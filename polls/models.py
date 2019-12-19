@@ -5,8 +5,6 @@ class Dish(models.Model):
     title = models.CharField(max_length=200)
     # This is for storing the url to the image
     img = models.CharField(max_length=200)
-    # if ImageField; https://www.geeksforgeeks.org/imagefield-django-models/
-    # img_file = models.ImageField
     restaurant_name = models.CharField(max_length=200)
     # decimal fields can be found here; https://www.geeksforgeeks.org/decimalfield-django-models/
     price = models.DecimalField(max_digits=6, decimal_places=2, blank=True, null=True)

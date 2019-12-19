@@ -42,12 +42,13 @@
         <button id="image_button">Save This Dish</button>
 
         <!-- from; https://github.com/tsayen/dom-to-image#usage -->
+        <!-- these dependencies are used for saving the image -->
         <script src="{% static 'polls/bower_components/dom-to-image/src/dom-to-image.js' %}"></script>
         <script src="{% static 'polls/bower_components/file-saver/dist/FileSaver.js'%}"></script>
         <script>
             document.getElementById("image_button").addEventListener("click", function(){
                 var node = document.getElementById('my-node');
-                
+                // this will grab all the html by the id, and add a white background. otherwise the background is clear
                 domtoimage.toBlob(node, {bgcolor: 'white'})
                     .then(function (blob) {
                         window.saveAs(blob, 'my-dish.png')

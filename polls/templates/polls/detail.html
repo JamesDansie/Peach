@@ -6,11 +6,29 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Dish Detail</title>
         {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'polls/reset.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
     </head>
 
-    <body id = "my-node">
-        <h1>{{ dish.title }}</h1>
+    <body>
+        <div class = "card" id = "my-node" style="padding-bottom: 30px;">
+            <img class="dish_pic" src = {{dish.img}} />
+            <div class = "text">
+                <span class="type">Type of Dish</span>
+                <h3>{{dish.title}}</h3>
+                <h4>{{dish.restaurant_name}}</h4>
+                <div class="text_body">
+                    <p>{{dish.description}}</p>
+                    <p>{{dish.other_text}}</p>
+                </div>
+                <p style="font-weight: bold;">Contains:</p>
+                <img src="{% static 'polls/img/30.png' %}" />
+                <img src="{% static 'polls/img/30.png' %}" />
+                <img src="{% static 'polls/img/30.png' %}" />
+
+                <p class="price">${{dish.price}}</p>
+            </div>
+        </div>
 
         {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
         
@@ -28,7 +46,6 @@
         <script src="{% static 'polls/bower_components/file-saver/dist/FileSaver.js'%}"></script>
         <script>
             document.getElementById("image_button").addEventListener("click", function(){
-                console.log('hi!')
                 var node = document.getElementById('my-node');
                 
                 domtoimage.toBlob(node, {bgcolor: 'white'})

@@ -1,38 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Dishes</title>
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
-</head>
-<body>
-    {% if dish_list %}
-        <h1>List of Dishes</h1>
-        <ul>
-        {% for dish in dish_list %}
-            <li><a href="{% url 'polls:detail' dish.id %}">{{ dish.title }}</a></li>
-        {% endfor %}
-        </ul>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Dishes</title>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'polls/reset.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
+    </head>
 
-        {% for dish in dish_list %}
-            <a href="{% url 'polls:detail' dish.id %}">
-                <div class = "card">
-                    <img src = {{dish.img}} />
-                    <div class = "text">
-                        <h3>{{dish.title}}</h3>
-                        <h4>{{dish.restaurant_name}}</h4>
-                        <p>{{dish.description}}</p>
-                        <p>{{dish.other_text}}</p>
-                        <p class="price">${{dish.price}}</p>
+    <body>
+        {% if dish_list %}
+            {% for dish in dish_list %}
+                <a href="{% url 'polls:detail' dish.id %}">
+                    <div class = "card">
+                        <img class="dish_pic" src = {{dish.img}} />
+                        <div class = "text">
+                            <span class="type">Type of Dish</span>
+                            <h3>{{dish.title}}</h3>
+                            <h4>{{dish.restaurant_name}}</h4>
+                            <div class="text_body">
+                                <p>{{dish.description}}</p>
+                                <p>{{dish.other_text}}</p>
+                            </div>
+                            <p style="font-weight: bold;">Contains:</p>
+                            <img src="https://via.placeholder.com/30" />
+                            <img src="https://via.placeholder.com/30" />
+                            <img src="https://via.placeholder.com/30" />
+                            <p class="price">${{dish.price}}</p>
+                        </div>
                     </div>
-                </div>
-            </a>
-        {% endfor %}
-    {% else %}
-        <p>No dishes are available.</p>
-    {% endif %}
-</body>
+                </a>
+            {% endfor %}
+        {% else %}
+            <p>No dishes are available.</p>
+        {% endif %}
+    </body>
 </html>
